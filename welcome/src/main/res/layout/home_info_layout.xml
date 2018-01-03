@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/info_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/content_rl"
+    android:layout_marginStart="60dp"
+    android:layout_marginEnd="70dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/activity_main_welcome_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome.Mr.Audi"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/activity_main_message_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="x 1"
+        android:drawableStart="@mipmap/message"/>
+
+    <ImageView
+        android:id="@+id/activity_main_wifi_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:layout_marginStart="8dp"
+        android:background="@mipmap/wifi" />
+
+    <ImageView
+        android:id="@+id/activity_main_usb_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:background="@mipmap/usb"/>
+
+    <TextView
+        android:id="@+id/activity_main_mac_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MAC:3893d556eb55642"
+        android:gravity="center_vertical"
+        android:drawableStart="@mipmap/vertical_line"/>
+
+</LinearLayout>

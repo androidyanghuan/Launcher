@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="400dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_menu_name_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/app_name"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white"/>
+
+    <ImageView
+        android:id="@+id/dialog_menu_icon_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"/>
+
+    <CheckBox
+        android:id="@+id/dialog_menu_launcher_cb"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/set_launcher"
+        android:checked="false"
+        android:disabledAlpha="0"
+        android:button="@null"
+        android:textSize="25sp"
+        android:textColor="@drawable/dialog_item_text_color_selector"
+        android:background="@drawable/dialog_item_bg_selector"/>
+
+    <Button
+        android:id="@+id/dialog_menu_uninstal_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/uninstall_str"
+        android:textSize="25sp"
+        android:textColor="@drawable/dialog_item_text_color_selector"
+        android:background="@drawable/dialog_item_bg_selector"/>
+
+    <Button
+        android:id="@+id/dialog_menu_clear_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/clear_data"
+        android:textSize="25sp"
+        android:textColor="@drawable/dialog_item_text_color_selector"
+        android:background="@drawable/dialog_item_bg_selector"/>
+
+    <TextView
+        android:id="@+id/dialog_menu_show_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/click_set_launcher"
+        android:textSize="25sp"/>
+
+</LinearLayout>

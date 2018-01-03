@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">一之</string>
+    <string name="home_page">首页</string>
+    <string name="night_model">夜间模式</string>
+
+
+    <string-array name="home_tabs">
+        <item>知乎日报</item>
+        <item>热点新闻</item>
+        <item>微信精选</item>
+    </string-array>
+</resources>

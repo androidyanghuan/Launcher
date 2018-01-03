@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entertainment/entertainment.iml" filepath="$PROJECT_DIR$/entertainment/entertainment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdk/sdk.iml" filepath="$PROJECT_DIR$/sdk/sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sound/sound.iml" filepath="$PROJECT_DIR$/sound/sound.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/welcome/welcome.iml" filepath="$PROJECT_DIR$/welcome/welcome.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workspace3.0.iml" filepath="$PROJECT_DIR$/workspace3.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yizi/yizi.iml" filepath="$PROJECT_DIR$/yizi/yizi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zwcx/zwcx.iml" filepath="$PROJECT_DIR$/zwcx/zwcx.iml" />
+    </modules>
+  </component>
+</project>

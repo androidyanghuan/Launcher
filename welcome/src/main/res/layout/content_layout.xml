@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:layout_marginStart="35dp"
+    android:layout_marginTop="40dp">
+
+    <RelativeLayout
+        android:id="@+id/one_layout"
+        android:layout_width="370dp"
+        android:layout_height="500dp"
+        android:background="@drawable/home_item_bg"
+        android:focusable="true"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/activity_main_one_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@mipmap/one" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/two_layout"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_alignTop="@+id/one_layout"
+        android:layout_marginStart="325dp"
+        android:background="@drawable/home_item_bg"
+        android:focusable="true"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/activity_main_two_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@mipmap/two" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/three_layout"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_alignTop="@+id/one_layout"
+        android:layout_marginStart="580dp"
+        android:background="@drawable/home_item_bg"
+        android:focusable="true"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/activity_main_three_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@mipmap/three" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/four_layout"
+        android:layout_width="370dp"
+        android:layout_height="500dp"
+        android:layout_alignTop="@+id/one_layout"
+        android:layout_marginStart="835dp"
+        android:background="@drawable/home_item_bg"
+        android:focusable="true"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/activity_main_four_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@mipmap/four" />
+    </RelativeLayout>
+
+</RelativeLayout>
