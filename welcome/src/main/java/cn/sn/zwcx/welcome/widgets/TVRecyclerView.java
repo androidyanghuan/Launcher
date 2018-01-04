@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.FocusFinder;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import java.util.List;
  * 5.在item获得焦点时和失去焦点时，这里有相应的回调方法。
  */
 public class TVRecyclerView extends RecyclerView {
+    private final String TAG = TVRecyclerView.class.getSimpleName();
 
     public TVRecyclerView(Context context) {
         super(context);
@@ -42,26 +44,28 @@ public class TVRecyclerView extends RecyclerView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG,"==========dispatchTouchEvent========" + ev.getAction());
         //在recyclerView的move事件情况下，拦截调，只让它响应五向键和左右箭头移动
         return ev.getAction() == MotionEvent.ACTION_MOVE || super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
+        if (getChildAt(0) == null) return false;
         int dx = this.getChildAt(0).getWidth();
         View focusView = this.getFocusedChild();
         if (focusView != null) {
             //处理左右方向键移动Item到边之后RecyclerView跟着移动
             switch (event.getKeyCode()) {
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
-                 //   LogUtil.i(this, "CustomRecyclerView.KEYCODE_DPAD_RIGHT.");
+                    Log.e(TAG,"CustomRecyclerView.KEYCODE_DPAD_RIGHT.");
                     if (event.getAction() == KeyEvent.ACTION_UP) {
                         return true;
                     } else {
                         View rightView = FocusFinder.getInstance().findNextFocus(this, focusView, View.FOCUS_RIGHT);
-                    //    LogUtil.i(this, "rightView is null:" + (rightView == null));
+                        Log.e(TAG, "rightView is null:" + (rightView == null));
                         if (rightView != null) {
-                     //       LogUtil.i(this, "CustomRecyclerView.requestFocusFromTouch.");
+                            Log.e(TAG, "CustomRecyclerView.requestFocusFromTouch.");
                             rightView.requestFocusFromTouch();
                             return true;
                         } else {
@@ -72,7 +76,7 @@ public class TVRecyclerView extends RecyclerView {
                     }
                 case KeyEvent.KEYCODE_DPAD_LEFT:
                     View leftView = FocusFinder.getInstance().findNextFocus(this, focusView, View.FOCUS_LEFT);
-//                    LogUtil.i(this, "left is null:" + (leftView == null));
+                    Log.e(TAG, "left is null:" + (leftView == null));
                     if (event.getAction() == KeyEvent.ACTION_UP) {
                         return true;
                     } else {

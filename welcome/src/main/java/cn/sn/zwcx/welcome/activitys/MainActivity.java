@@ -27,7 +27,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,7 +48,7 @@ import cn.sn.zwcx.welcome.app.App;
 import cn.sn.zwcx.welcome.bean.Application;
 import cn.sn.zwcx.welcome.widgets.TVRecyclerView;
 
-public class MainActivity extends Activity implements View.OnFocusChangeListener,View.OnClickListener{
+public class MainActivity extends Activity implements View.OnFocusChangeListener,View.OnClickListener,View.OnHoverListener{
     private final String TAG = "Yang Huan:" + MainActivity.class.getSimpleName();
 
     /** 内容视图 */
@@ -61,9 +63,11 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
     private Context mContext;
 
     /** 底部导航栏 */
-    private TVRecyclerView mTab;
+ //   private TVRecyclerView mTab;
+            private RecyclerView mTab;
 
-    private HomeAdapter mHomeAdapter;
+//    private HomeAdapter mHomeAdapter;
+    private HomeAppAdapter mHomeAdapter;
 
     /** 存放快捷方式的List */
     private  List<Application> mApplications = new ArrayList<>();
@@ -154,21 +158,18 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
         else
             mMac.setText("MAC:");
 
-      //  initBottomTab();
-
     }
 
     /** 初始化底部列表 */
     private void initBottomTab() {
-     //   new GetShortcutTask().execute();
-        mHomeAdapter = new HomeAdapter(mContext,mApplications);
-     //   mHomeAdapter = new HomeAppAdapter(mApplications);
+    //    mHomeAdapter = new HomeAdapter(mContext,mApplications);
+        mHomeAdapter = new HomeAppAdapter(mApplications);
         mTab.setItemAnimator(new DefaultItemAnimator());
         mLayoutManager = new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL);
         mLayoutManager.setAutoMeasureEnabled(true);
         mTab.setLayoutManager(mLayoutManager);
 
-        mHomeAdapter.setOnItemClickListener(new TVRecyclerView.CustomAdapter.OnItemClickListener() {
+     /*   mHomeAdapter.setOnItemClickListener(new TVRecyclerView.CustomAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Log.e(TAG,"你点了：" + mApplications.get(position).name);
@@ -178,19 +179,57 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
             public void onItemLongClick(View view, int position) {
 
             }
-        });
-    /*    mHomeAdapter.setOnItemClickListener(new HomeAppAdapter.OnItemClickListener() {
+        });*/
+        mHomeAdapter.setOnItemClickListener(new HomeAppAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(View view, int position) {
                 Log.e(TAG,"你点了：" + mApplications.get(position).name);
+                switch (position){
+                    case 0:
+                        break;
+                    case 8:
+                        startActivity(new Intent(mContext,AppsActivity.class));
+                        break;
+                }
             }
-        });*/
+        });
+
         mTab.setAdapter(mHomeAdapter);
+    }
+
+    @Override
+    public boolean onHover(View v, MotionEvent event) {
+        int action = event.getAction();
+        v.bringToFront();
+        int id = v.getId();
+        switch (id) {
+            case R.id.one_layout:
+            case R.id.four_layout:
+                if (action == MotionEvent.ACTION_HOVER_ENTER) {
+                    v.requestFocusFromTouch();
+                    v.requestFocus();
+                    ViewCompat.animate(v).scaleX(1.1f).scaleY(1.05f).start();
+                } else if (action == MotionEvent.ACTION_HOVER_EXIT){
+                    ViewCompat.animate(v).scaleX(1f).scaleY(1f).start();
+                }
+                break;
+            case R.id.two_layout:
+            case R.id.three_layout:
+                if (action == MotionEvent.ACTION_HOVER_ENTER) {
+                    v.requestFocusFromTouch();
+                    v.requestFocus();
+                    ViewCompat.animate(v).scaleX(1.15f).scaleY(1.05f).start();
+                } else if (action == MotionEvent.ACTION_HOVER_EXIT){
+                    ViewCompat.animate(v).scaleX(1f).scaleY(1f).start();
+                }
+                break;
+        }
+
+        return false;
     }
 
     /** 异步获取app快捷方式的任务栈 */
     private class GetShortcutTask extends AsyncTask<Void,Void,Void>{
-
         @Override
         protected Void doInBackground(Void... voids) {
             mApplications = getAppShortcut();
@@ -200,8 +239,6 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-          //  mHomeAdapter.notifyDataSetChanged();
-            Log.e(TAG,"****************onPostExecute***************" + mApplications.size());
             initBottomTab();
         }
     }
@@ -337,6 +374,11 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
         mSecond.setOnFocusChangeListener(this);
         mThird.setOnFocusChangeListener(this);
         mLast.setOnFocusChangeListener(this);
+
+        mFirst.setOnHoverListener(this);
+        mSecond.setOnHoverListener(this);
+        mThird.setOnHoverListener(this);
+        mLast.setOnHoverListener(this);
 
         mFirst.setOnClickListener(this);
         mSecond.setOnClickListener(this);

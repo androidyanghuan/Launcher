@@ -10,5 +10,5 @@ import android.graphics.drawable.Drawable;
 
 public class Application {
     public Drawable icon;
-    public String name;
+    public String name,packageNema,className;
 }

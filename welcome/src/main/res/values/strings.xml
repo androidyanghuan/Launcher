@@ -4,6 +4,7 @@
     <string name="time_name">18:30 P.M 07 Nov 2017</string>
     <string name="weather_name">Paris -3°</string>
     <string name="str_day">day</string>
+    <string name="my_apps">My Apps</string>
 
     <string-array name="week">
         <item>Sun</item>

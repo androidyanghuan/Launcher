@@ -20,7 +20,13 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <cn.sn.zwcx.welcome.widgets.TVRecyclerView
+    <!--    <cn.sn.zwcx.welcome.widgets.TVRecyclerView
+            android:id="@+id/activity_main_tvrv"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:descendantFocusability="beforeDescendants"/>-->
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/activity_main_tvrv"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
