@@ -44,7 +44,7 @@ public class TVRecyclerView extends RecyclerView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.e(TAG,"==========dispatchTouchEvent========" + ev.getAction());
+     //   Log.e(TAG,"==========dispatchTouchEvent========" + ev.getAction());
         //在recyclerView的move事件情况下，拦截调，只让它响应五向键和左右箭头移动
         return ev.getAction() == MotionEvent.ACTION_MOVE || super.dispatchTouchEvent(ev);
     }
@@ -58,14 +58,14 @@ public class TVRecyclerView extends RecyclerView {
             //处理左右方向键移动Item到边之后RecyclerView跟着移动
             switch (event.getKeyCode()) {
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    Log.e(TAG,"CustomRecyclerView.KEYCODE_DPAD_RIGHT.");
+                //    Log.e(TAG,"CustomRecyclerView.KEYCODE_DPAD_RIGHT.");
                     if (event.getAction() == KeyEvent.ACTION_UP) {
                         return true;
                     } else {
                         View rightView = FocusFinder.getInstance().findNextFocus(this, focusView, View.FOCUS_RIGHT);
-                        Log.e(TAG, "rightView is null:" + (rightView == null));
+                    //    Log.e(TAG, "rightView is null:" + (rightView == null));
                         if (rightView != null) {
-                            Log.e(TAG, "CustomRecyclerView.requestFocusFromTouch.");
+                        //    Log.e(TAG, "CustomRecyclerView.requestFocusFromTouch.");
                             rightView.requestFocusFromTouch();
                             return true;
                         } else {
@@ -76,7 +76,7 @@ public class TVRecyclerView extends RecyclerView {
                     }
                 case KeyEvent.KEYCODE_DPAD_LEFT:
                     View leftView = FocusFinder.getInstance().findNextFocus(this, focusView, View.FOCUS_LEFT);
-                    Log.e(TAG, "left is null:" + (leftView == null));
+                //    Log.e(TAG, "left is null:" + (leftView == null));
                     if (event.getAction() == KeyEvent.ACTION_UP) {
                         return true;
                     } else {

@@ -29,7 +29,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -42,11 +41,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.sn.zwcx.welcome.R;
-import cn.sn.zwcx.welcome.adapters.HomeAdapter;
 import cn.sn.zwcx.welcome.adapters.HomeAppAdapter;
 import cn.sn.zwcx.welcome.app.App;
 import cn.sn.zwcx.welcome.bean.Application;
-import cn.sn.zwcx.welcome.widgets.TVRecyclerView;
 
 public class MainActivity extends Activity implements View.OnFocusChangeListener,View.OnClickListener,View.OnHoverListener{
     private final String TAG = "Yang Huan:" + MainActivity.class.getSimpleName();
@@ -158,6 +155,8 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
         else
             mMac.setText("MAC:");
 
+        initBottomTab();
+
     }
 
     /** 初始化底部列表 */
@@ -183,7 +182,7 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
         mHomeAdapter.setOnItemClickListener(new HomeAppAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(View view, int position) {
-                Log.e(TAG,"你点了：" + mApplications.get(position).name);
+           //     Log.e(TAG,"你点了：" + mApplications.get(position).name);
                 switch (position){
                     case 0:
                         break;
@@ -232,14 +231,14 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
     private class GetShortcutTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected Void doInBackground(Void... voids) {
-            mApplications = getAppShortcut();
+            mApplications.addAll(getAppShortcut());
             return null;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            initBottomTab();
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            mHomeAdapter.notifyDataSetChanged();
         }
     }
 
@@ -264,7 +263,7 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
             if (count == 9) break;
             apps.add(app);
             count ++;
-            Log.e(TAG,"name:" + app.name);
+         //   Log.e(TAG,"name:" + app.name);
         }
         return apps;
     }

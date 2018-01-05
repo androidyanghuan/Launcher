@@ -1,15 +1,22 @@
 package cn.sn.zwcx.welcome.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.List;
 import cn.sn.zwcx.welcome.R;
 import cn.sn.zwcx.welcome.bean.Application;
@@ -25,9 +32,12 @@ public class HomeAdapter extends TVRecyclerView.CustomAdapter<Application>{
 
     private List<Application> datas;
 
-    public HomeAdapter(Context context, List<Application> data) {
+    private TextView hint;
+
+    public HomeAdapter(Context context, List<Application> data,TextView selectedHint) {
         super(context, data);
         datas = data;
+        hint = selectedHint;
     }
 
     @Override
@@ -55,7 +65,15 @@ public class HomeAdapter extends TVRecyclerView.CustomAdapter<Application>{
         TextView tvFocus = itemView.findViewById(R.id.tv_focus);
         ImageView focusBg = itemView.findViewById(R.id.focus_bg);
         tvFocus.setVisibility(View.VISIBLE);
-        focusBg.setVisibility(View.VISIBLE);
+        int total = datas.size();
+        int selected = position + 1;
+        String text = selected + File.separator + total;
+        SpannableString ss = new SpannableString(text);
+        int end = text.indexOf(File.separator);
+        ss.setSpan(new ForegroundColorSpan(Color.GREEN),0,end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        hint.setText(ss);
+     //   focusBg.setVisibility(View.VISIBLE);
+        itemView.setBackgroundResource(R.drawable.default_focus);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             // 抬高Z轴
             ViewCompat.animate(itemView).scaleX(1.1f).scaleY(1.1f).translationZ(1).start();
@@ -72,7 +90,9 @@ public class HomeAdapter extends TVRecyclerView.CustomAdapter<Application>{
         TextView tvFocus = itemView.findViewById(R.id.tv_focus);
         ImageView focusBg = itemView.findViewById(R.id.focus_bg);
      //   tvFocus.setVisibility(View.INVISIBLE);
-        focusBg.setVisibility(View.INVISIBLE);
+     //   focusBg.setVisibility(View.INVISIBLE);
+     //   itemView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.apps_item_bg));
+        itemView.setBackground(null);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             ViewCompat.animate(itemView).scaleX(1f).scaleY(1f).translationZ(0).start();
         }else {
