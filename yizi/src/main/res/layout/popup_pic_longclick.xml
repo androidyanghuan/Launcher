@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_popup_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="@drawable/shape_corner_bg">
+
+    <TextView
+        android:id="@+id/item_go_image_browse"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/check_photo"
+        android:textSize="16sp"
+        android:textColor="@color/md_grey_700"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/dimen_5dp"
+        android:layout_marginEnd="@dimen/dimen_5dp"
+        android:background="@color/md_grey_500"/>
+
+    <TextView
+        android:id="@+id/item_save_image"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/save_picture"
+        android:textSize="16sp"
+        android:textColor="@color/md_grey_700"/>
+
+</LinearLayout>
