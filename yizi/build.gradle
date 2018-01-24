@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 26
 
@@ -34,4 +35,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':sdk')
     implementation 'com.android.support:design:26.1.0'
+    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation files('libs/MobTools-2017.0914.1125.jar')
+    implementation files('libs/MobCommons-2017.0914.1125.jar')
+    implementation files('libs/ShareSDK-Core-3.1.0.jar')
+    implementation files('libs/ShareSDK-Email-3.1.0.jar')
+    implementation files('libs/ShareSDK-QQ-3.1.0.jar')
+    implementation files('libs/ShareSDK-QZone-3.1.0.jar')
+    implementation files('libs/ShareSDK-ShortMessage-3.1.0.jar')
+    //Butterknife
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
 }

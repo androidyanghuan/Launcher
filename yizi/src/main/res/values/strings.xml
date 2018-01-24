@@ -1,8 +1,47 @@
 <resources>
     <string name="app_name">一之</string>
     <string name="home_page">首页</string>
+    <string name="day_model">日间模式</string>
     <string name="night_model">夜间模式</string>
+    <string name="skiping_str">跳转中...</string>
+    <string name="check_photo">查看图片</string>
+    <string name="save_picture">保存图片</string>
+    <string name="save_success">保存图片成功</string>
+    <string name="save_failed">保存图片失败</string>
 
+    <string name="zhihu_detail_title">Zhihu daily</string>
+    <string name="wangyi_detail_title">Top news</string>
+    <string name="weixin_detail_title">WeChat</string>
+
+    <string name="home_str">主页</string>
+    <string name="dry_goods">干货</string>
+    <string name="movie_str">影视</string>
+    <string name="books_str">书籍</string>
+    <string name="personal_str">个人</string>
+
+    <string name="project_home">项目主页</string>
+    <string name="more_content">更多内容</string>
+    <string name="qr_code">二维码</string>
+    <string name="share_project">分享项目</string>
+    <string name="option_str">选项</string>
+    <string name="about_str">关于</string>
+
+    <string name="learn_and_live">Learn and live.</string>
+    <string name="skip_str">跳过</string>
+    <string name="permission_info">App未能获取全部需要的相关权限,部分功能不能正常使用.</string>
+    <string name="download_str">下载</string>
+    <string name="qrcode_experience">扫描上方的二维码即可体验App</string>
+    <string name="share_partner">分享给小伙伴</string>
+    <string name="statement_info">声明：此项目仅做学习练手使用，不得用于商业用途</string>
+    <string name="press_again">再按一次退出本应用</string>
+
+    <string name="day_recommend">每日推荐</string>
+    <string name="cargo_custom">干货定制</string>
+    <string name="welfare_str">福利</string>
+
+    <string name="android_str">Android</string>
+    <string name="more_str">更多</string>
+    <string name="another_str">换一个</string>
 
     <string-array name="home_tabs">
         <item>知乎日报</item>
