@@ -1,4 +1,4 @@
-package cn.sn.zwcx.yizi.fragments.home;
+package cn.sn.zwcx.yizi.fragments.home.child;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,15 +19,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.sn.zwcx.sdk.adapters.FragmentAdapter;
 import cn.sn.zwcx.sdk.anim.ToolbarAnimManager;
 import cn.sn.zwcx.sdk.base.BaseCompatActivity;
 import cn.sn.zwcx.sdk.base.BasePresenter;
 import cn.sn.zwcx.sdk.fragments.BaseMVPCompatFragment;
 import cn.sn.zwcx.sdk.utils.SpUtil;
 import cn.sn.zwcx.yizi.R;
+import cn.sn.zwcx.yizi.activitys.detail.WebViewLoadActivity;
 import cn.sn.zwcx.yizi.app.App;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.contract.home.HomeMainContract;
+import cn.sn.zwcx.yizi.fragments.home.child.tabs.WangyiFragment;
+import cn.sn.zwcx.yizi.fragments.home.child.tabs.WeixinFragment;
+import cn.sn.zwcx.yizi.fragments.home.child.tabs.ZhihuFragment;
 import cn.sn.zwcx.yizi.presenter.home.HomeMainPresenter;
 
 /**
@@ -103,16 +108,27 @@ public class HomeFragment extends BaseMVPCompatFragment<HomeMainContract.HomeMai
             tab.addTab(tab.newTab().setText(tabs[i]));
             switch (i){
                 case 0:
-                 //   fragments.add();
+                    fragments.add(ZhihuFragment.newInstance());
                     break;
                 case 1:
-
+                    fragments.add(WangyiFragment.newInstance());
                     break;
                 case 2:
-
+                    fragments.add(WeixinFragment.newInstance());
+                    break;
+                default:
+                    fragments.add(ZhihuFragment.newInstance());
                     break;
             }
         }
+        viewPager.setAdapter(new FragmentAdapter(getChildFragmentManager(),fragments));
+        //要设置到viewpager.setAdapter后才起作用
+        viewPager.setCurrentItem(0);
+        tab.setupWithViewPager(viewPager);
+        tab.setVerticalScrollbarPosition(0);
+        //tlTabs.setupWithViewPager方法内部会remove所有的tabs，这里重新设置一遍tabs的text，否则tabs的text不显示
+        for (int i = 0; i < length; i++)
+            tab.getTabAt(i).setText(tabs[i]);
     }
 
     @Override
@@ -141,7 +157,7 @@ public class HomeFragment extends BaseMVPCompatFragment<HomeMainContract.HomeMai
                 Bundle bundle = new Bundle();
                 bundle.putString(BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_TITLE,BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_TITLE_STR);
                 bundle.putString(BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_URL,BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_URL_STR);
-             //   startNewActivity(WebViewLoadActivity.class,bundle);
+                startNewActivity(WebViewLoadActivity.class,bundle);
             }
         });
         toolbar.inflateMenu(R.menu.toolbar_menu);
