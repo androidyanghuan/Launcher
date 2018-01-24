@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_home"
+        android:icon="@drawable/ic_vector_bottom_home"
+        android:title="@string/home_str"/>
+
+    <item
+        android:id="@+id/menu_item_goods"
+        android:icon="@drawable/ic_vector_bottom_gankio"
+        android:title="@string/dry_goods"/>
+
+    <item
+        android:id="@+id/menu_item_books"
+        android:icon="@drawable/ic_vector_bottom_book"
+        android:title="@string/books_str"/>
+
+    <item
+        android:id="@+id/menu_item_personal"
+        android:icon="@drawable/ic_vector_bottom_personal"
+        android:title="@string/personal_str"/>
+
+</menu>
