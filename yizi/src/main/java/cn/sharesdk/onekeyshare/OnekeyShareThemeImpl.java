@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
@@ -131,12 +130,12 @@ public abstract class OnekeyShareThemeImpl implements PlatformActionListener, Ca
 
 				Intent test = new Intent(Intent.ACTION_SEND);
 				test.setPackage("com.sina.weibo");
-				test.setType("image/*");
+				test.setType("image");
 				ResolveInfo ri = MobSDK.getContext().getPackageManager().resolveActivity(test, 0);
 				if(ri == null) {
 					test = new Intent(Intent.ACTION_SEND);
 					test.setPackage("com.sina.weibog3");
-					test.setType("image/*");
+					test.setType("image");
 					ri = MobSDK.getContext().getPackageManager().resolveActivity(test, 0);
 				}
 				return (ri != null);
@@ -148,7 +147,7 @@ public abstract class OnekeyShareThemeImpl implements PlatformActionListener, Ca
 
 	final void shareSilently(Platform platform) {
 		if (formateShareData(platform)) {
-			ShareParams sp = shareDataToShareParams(platform);
+			Platform.ShareParams sp = shareDataToShareParams(platform);
 			if (sp != null) {
 				toast("ssdk_oks_sharing");
 				if (customizeCallback != null) {
@@ -314,7 +313,7 @@ public abstract class OnekeyShareThemeImpl implements PlatformActionListener, Ca
 				String path = ResHelper.getCachePath(MobSDK.getContext(), "screenshot");
 				File ss = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
 				FileOutputStream fos = new FileOutputStream(ss);
-				viewToShare.compress(CompressFormat.JPEG, 100, fos);
+				viewToShare.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 				fos.flush();
 				fos.close();
 				shareParamsMap.put("imagePath", ss.getAbsolutePath());

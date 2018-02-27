@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <application
-        android:name="cn.sn.zwcx.sdk.global.GlobalApplication"
+        android:name=".global.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -37,6 +37,10 @@
         <activity android:name=".activitys.detail.WebViewLoadActivity" />
         <activity android:name=".activitys.pic.ImageBrowseActivity" />
         <activity android:name=".activitys.QRCodeActivity"/>
+        <activity android:name=".activitys.detail.ZhihuDailyDetailActivity"/>
+        <activity android:name=".activitys.detail.WangyiDailyDetailActivity"/>
+        <activity android:name=".activitys.detail.WeixinChoiceDetailActivity"/>
+        <activity android:name=".activitys.detail.GankIoDetailActivity"/>
         <!--ShareSdk-->
         <activity
             android:name="com.mob.tools.MobUIShell"

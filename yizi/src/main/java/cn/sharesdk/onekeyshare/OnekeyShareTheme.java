@@ -12,7 +12,8 @@ import cn.sharesdk.onekeyshare.themes.classic.ClassicTheme;
 
 /** 快捷分享的主题样式  */
 public enum OnekeyShareTheme {
-	/** 九格宫的主题样式 ,对应的实现类ClassicTheme */
+/** 九格宫的主题样式 ,对应的实现类ClassicTheme */
+
 	CLASSIC(0, new ClassicTheme());
 
 	private final int value;

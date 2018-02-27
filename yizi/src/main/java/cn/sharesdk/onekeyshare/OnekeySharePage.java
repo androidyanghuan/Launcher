@@ -8,6 +8,7 @@
 
 package cn.sharesdk.onekeyshare;
 
+
 import com.mob.tools.FakeActivity;
 
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class OnekeySharePage extends FakeActivity {
 		this.impl = impl;
 	}
 
-	/** 分享界面是否弹窗模式 */
+/** 分享界面是否弹窗模式 */
+
 
 	protected final boolean isDialogMode() {
 		return impl.dialogMode;
@@ -35,7 +37,8 @@ public class OnekeySharePage extends FakeActivity {
 		return impl.shareParamsMap;
 	}
 
-	/** 静默分享开关（没有界面，直接分享 ）*/
+/** 静默分享开关（没有界面，直接分享 ）*/
+
 	protected final boolean isSilent() {
 		return impl.silent;
 	}

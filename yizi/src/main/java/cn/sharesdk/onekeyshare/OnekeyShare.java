@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+
 import com.mob.MobApplication;
 import com.mob.MobSDK;
 import com.mob.tools.utils.BitmapHelper;
