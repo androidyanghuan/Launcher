@@ -34,12 +34,12 @@ public class StatusBarUtil {
 
     /**
      * 设置状态栏背景色
-     * 4.4一下不处理
+     * 4.4以下不处理
      * 4.4使用默认沉浸试状态栏
      * @param activity
      * @param color
      */
-    private static void setBarColor(Activity activity, int color) {
+    public static void setBarColor(Activity activity, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = activity.getWindow();
             View decorView = window.getDecorView();
@@ -85,7 +85,7 @@ public class StatusBarUtil {
      * 获取状态栏的高度
      * @param context
      */
-    private static int getStatusBarHeight(Context context) {
+    public static int getStatusBarHeight(Context context) {
         Class<?> c = null;
         Object obj = null;
         Field field = null;

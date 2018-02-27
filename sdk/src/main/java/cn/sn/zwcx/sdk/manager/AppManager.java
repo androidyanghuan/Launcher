@@ -53,7 +53,7 @@ public class AppManager {
 
     /** 结束指定的Activity */
     public void finishActivity(Activity activity){
-        if (null != activity){
+        if (activity != null){
             activityStack.remove(activity);
             activity.finish();
         }
@@ -63,8 +63,7 @@ public class AppManager {
     public void finishActivity(Class<?> cls){
         for (Activity activity : activityStack){
             if (activity.getClass().equals(cls)) {
-                activityStack.remove(activity);
-                activity.finish();
+                finishActivity(activity);
             }
         }
     }
@@ -90,6 +89,11 @@ public class AppManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /** app是否退出了 */
+    public boolean isAppExit(){
+        return activityStack == null || activityStack.isEmpty();
     }
 
 }

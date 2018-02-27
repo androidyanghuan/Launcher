@@ -3,7 +3,7 @@ package cn.sn.zwcx.sdk.base;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -14,9 +14,11 @@ import butterknife.ButterKnife;
 import cn.sn.zwcx.sdk.R;
 import cn.sn.zwcx.sdk.global.GlobalApplication;
 import cn.sn.zwcx.sdk.manager.AppManager;
+import cn.sn.zwcx.sdk.utils.AppUtil;
 import cn.sn.zwcx.sdk.utils.SpUtil;
 import cn.sn.zwcx.sdk.utils.StatusBarUtil;
 import cn.sn.zwcx.sdk.utils.ThemeUtil;
+
 import cn.sn.zwcx.sdk.widgets.WaitProgressDialog;
 import me.yokeyword.fragmentation.SupportActivity;
 import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
@@ -66,8 +68,8 @@ protected boolean isTransAnim;
 
     // 子类可以重写该方法初始化数据
     protected void initData() {
-        mApp = GlobalApplication.getInstance();
-        context = mApp.getContext();
+        mApp = (GlobalApplication) getApplication();
+        context = AppUtil.getContext();
         mDialog = new WaitProgressDialog(this);
         isTransAnim = true;
     }
@@ -103,7 +105,7 @@ protected boolean isTransAnim;
      * 隐藏提示框
      */
     protected void hidenProgressDialog(){
-        if (null != mDialog)
+        if (mDialog != null)
             mDialog.cancel();
     }
 
@@ -186,6 +188,7 @@ protected boolean isTransAnim;
      */
     protected void initTitleBar(Toolbar toolbar, String title){
         toolbar.setTitle(title);
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white);

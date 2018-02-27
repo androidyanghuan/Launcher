@@ -3,8 +3,6 @@ package cn.sn.zwcx.sdk.utils;
 import android.content.Context;
 import android.widget.Toast;
 
-import cn.sn.zwcx.sdk.global.GlobalApplication;
-
 /**
  * Created by on 2017/12/20 9:14.
  * Created by author YangHuan
@@ -20,7 +18,7 @@ public class ToastUtil {
      * @param resourceId
      */
     public static void showToast(int resourceId){
-        showToast(GlobalApplication.getInstance().getContext().getResources().getString(resourceId));
+        showToast(AppUtil.getContext().getResources().getString(resourceId));
     }
 
     /**
@@ -37,9 +35,8 @@ public class ToastUtil {
      * @param duration
      */
     public static void showToast(final String str, final int duration) {
-        GlobalApplication ga = GlobalApplication.getInstance();
-        final Context context = ga.getContext();
-        ga.runOnUIThread(new Runnable() {
+        final Context context = AppUtil.getContext();
+        AppUtil.runOnUIThread(new Runnable() {
             @Override
             public void run() {
                 if (mToast == null){
