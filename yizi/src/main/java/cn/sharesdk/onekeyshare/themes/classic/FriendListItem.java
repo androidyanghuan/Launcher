@@ -21,7 +21,6 @@ import com.mob.tools.gui.AsyncImageView;
 import com.mob.tools.gui.BitmapProcessor;
 import com.mob.tools.utils.ResHelper;
 
-import cn.sharesdk.onekeyshare.themes.classic.FriendAdapter.Following;
 
 /** 好友列表的item */
 public class FriendListItem extends LinearLayout {
@@ -78,7 +77,7 @@ public class FriendListItem extends LinearLayout {
 		}
 	}
 
-	public void update(Following following, boolean fling) {
+	public void update(FriendAdapter.Following following, boolean fling) {
 		tvName.setText(following.screenName);
 		ivCheck.setImageBitmap(following.checked ? bmChd : bmUnch);
 		if (aivIcon != null) {

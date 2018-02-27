@@ -27,6 +27,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.mob.MobSDK;
 import com.mob.tools.gui.AsyncImageView;
 import com.mob.tools.utils.DeviceHelper;
@@ -47,7 +48,7 @@ import cn.sharesdk.onekeyshare.themes.classic.port.FriendListPagePort;
 public class EditPage extends OnekeySharePage implements OnClickListener, TextWatcher, Runnable {
 	private OnekeyShareThemeImpl impl;
 	protected Platform platform;
-	protected ShareParams sp;
+	protected Platform.ShareParams sp;
 
 	protected LinearLayout llPage;
 	protected RelativeLayout rlTitle;

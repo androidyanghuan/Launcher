@@ -10,7 +10,6 @@ package cn.sharesdk.onekeyshare.themes.classic;
 
 import android.content.Context;
 import android.content.res.Configuration;
-
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.Platform.ShareParams;
 import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
@@ -19,11 +18,11 @@ import cn.sharesdk.onekeyshare.themes.classic.land.PlatformPageLand;
 import cn.sharesdk.onekeyshare.themes.classic.port.EditPagePort;
 import cn.sharesdk.onekeyshare.themes.classic.port.PlatformPagePort;
 
-
 /** 九宫格经典主题样式的实现类*/
 public class ClassicTheme extends OnekeyShareThemeImpl {
 
-	/** 展示平台列表*/
+/** 展示平台列表*/
+
 
 	// 两次弹出九宫格间隔不能少于1000毫秒
 	private static final int MIN_CLICK_DELAY_TIME = 1000;
@@ -45,7 +44,8 @@ public class ClassicTheme extends OnekeyShareThemeImpl {
 
 	}
 
-	/** 展示编辑界面*/
+/** 展示编辑界面*/
+
 	protected void showEditPage(Context context, Platform platform, ShareParams sp) {
 		EditPage page;
 		int orientation = context.getResources().getConfiguration().orientation;

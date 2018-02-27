@@ -32,13 +32,17 @@ import cn.sharesdk.onekeyshare.OnekeySharePage;
 import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
 
 /** 九宫格的抽象类 */
+
 public abstract class PlatformPage extends OnekeySharePage {
 	private ClassicTheme impl;
-	/** 点击九格宫，展示编辑界面，要执行的子线程 */
+/** 点击九格宫，展示编辑界面，要执行的子线程 */
+
 	private Runnable beforeFinish;
-	/** 九宫格显示时的动画 */
+/** 九宫格显示时的动画 */
+
 	private Animation animShow;
-	/** 九宫格隐藏时的动画 */
+/** 九宫格隐藏时的动画 */
+
 	private Animation animHide;
 	private LinearLayout llPanel;
 	private boolean finished;

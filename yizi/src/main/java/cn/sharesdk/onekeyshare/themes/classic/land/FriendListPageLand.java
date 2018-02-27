@@ -14,6 +14,7 @@ import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
 import cn.sharesdk.onekeyshare.themes.classic.FriendListPage;
 
 /** 横屏的好友列表 */
+
 public class FriendListPageLand extends FriendListPage {
 	private static final int DESIGN_SCREEN_WIDTH = 1280;
 	private static final int DESIGN_TITLE_HEIGHT = 70;

@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 import com.mob.tools.gui.PullToRequestView;
 import com.mob.tools.utils.ResHelper;
 
@@ -30,7 +31,9 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.onekeyshare.OnekeySharePage;
 import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
+
 import cn.sharesdk.onekeyshare.themes.classic.FriendAdapter.Following;
+
 
 /** 编辑界面，@好友时，弹出的好友列表 */
 public abstract class FriendListPage extends OnekeySharePage implements OnClickListener, OnItemClickListener {

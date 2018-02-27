@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 
+
 import com.mob.tools.gui.PullToRequestListAdapter;
 import com.mob.tools.gui.PullToRequestView;
 import com.mob.tools.utils.UIHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import cn.sharesdk.framework.Platform;
+;import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
 /** 好友列表的适配器 */
