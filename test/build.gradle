@@ -1,12 +1,16 @@
 apply plugin: 'java-library'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //  api "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    //   api "com.squareup.okio:okio:1.9.0"
+    compile 'com.squareup.okio:okio:1.13.0'
+    implementation files('libs/okio-1.13.0.jar')
 }
 
 tasks.withType(JavaCompile){
     options.encoding="UTF-8"
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

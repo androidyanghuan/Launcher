@@ -29,44 +29,62 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     //fragmentation
-    compile "me.yokeyword:fragmentation:$rootProject.fragmentationVersion"
-    implementation files('libs/MobCommons-2017.0914.1125.jar')
-    implementation files('libs/MobTools-2017.0914.1125.jar')
-    implementation files('libs/nineoldandroids-2.4.0.jar')
-    implementation 'com.google.code.gson:gson:2.2.4'
+    api "me.yokeyword:fragmentation:$rootProject.fragmentationVersion"
+    api files('libs/MobCommons-2017.0914.1125.jar')
+    api files('libs/MobTools-2017.0914.1125.jar')
+    api files('libs/nineoldandroids-2.4.0.jar')
+    api 'com.google.code.gson:gson:2.2.4'
     //Butterknife
-    compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    api "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     // RxJava
-    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
-    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
-    compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbindingVersion"
+    api "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
+    api "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+    api "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbindingVersion"
 
-    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    api "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
 
     /*  compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
 
 
             compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"*/
     // Glide
-    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    compile "com.github.bumptech.glide:okhttp-integration:$rootProject.glideokhttpVersion"
-    compile "jp.wasabeef:glide-transformations:$rootProject.glideTransformationVersion"
+    api "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    api "com.github.bumptech.glide:okhttp-integration:$rootProject.glideokhttpVersion"
+    api "jp.wasabeef:glide-transformations:$rootProject.glideTransformationVersion"
     //PhotoView
-    compile "com.bm.photoview:library:$rootProject.photoViewVersion"
-    implementation 'com.android.support:design:26.1.0'
+    api "com.bm.photoview:library:$rootProject.photoViewVersion"
+    api "com.cocosw:bottomsheet:$rootProject.BottomSheetVersion"
+    api 'com.android.support:design:26.1.0'
     //BaseRecyclerViewAdapterHelper
-    compile "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.baseRecyclerViewAdapterHelperVersion"
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.baseRecyclerViewAdapterHelperVersion"
 
     // Retrofit
-    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttploggingVersion"
-    compile "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttploggingVersion"
+    api "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
 
     //circle imageview
-    compile "de.hdodenhof:circleimageview:$rootProject.circleImageviewVersion"
+    api "de.hdodenhof:circleimageview:$rootProject.circleImageviewVersion"
 
     //permissions
-    compile "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxPerssionsVersion"
+    api "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxPerssionsVersion"
 }
+
+    // 修改jar名称以及指定jar生成的路径
+/*    tast makeJar(type:Copy){
+        // 删除存在的
+        delete 'build/libs/test.jar'
+        // 设置拷贝的文件
+        from('build/intermediates/bundles/release/')
+        // 打进jar包后的文件目录
+        into('build/libs/')
+        // 将classes.jar放在build/libs目录下
+        // include,exclude参数来设置过滤
+        // 我们只关心classes.jar这个文件
+        include('classes.jar')
+        // 重命名
+        rename('classes.jar','test.jar');
+    }
+    makeJar.dependsOn(build)*/
