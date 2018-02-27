@@ -2,7 +2,6 @@ package cn.sn.zwcx.yizi.presenter.gankio.tabs;
 
 import android.os.Bundle;
 
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import cn.sn.zwcx.sdk.utils.AppUtil;
 import cn.sn.zwcx.yizi.R;
 import cn.sn.zwcx.yizi.activitys.detail.GankIoDetailActivity;
 import cn.sn.zwcx.yizi.activitys.pic.ImageBrowseActivity;
-import cn.sn.zwcx.yizi.app.App;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.constants.RxBusCode;
 import cn.sn.zwcx.yizi.contract.gankio.tabs.GankIoDayContract;

@@ -1,14 +1,17 @@
 package cn.sn.zwcx.yizi.presenter.home.tabs;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.ArrayList;
 
 import cn.sn.zwcx.sdk.utils.AppUtil;
 import cn.sn.zwcx.yizi.R;
+import cn.sn.zwcx.yizi.activitys.detail.WangyiDailyDetailActivity;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.contract.home.tabs.WangyiContract;
 import cn.sn.zwcx.yizi.model.bean.wangyi.WangyiNewsItemBean;
@@ -52,9 +55,12 @@ public class WangyiPresenter extends WangyiContract.WangyiPresenter {
                     ArrayList<WangyiNewsItemBean> newsList = wangyiNewsListBean.getNewsList();
                     int size = newsList.size();
                     for (int i = 0; i < size; i++) {
+                    //    Log.e("***********","url:" + newsList.get(i).getUrl());
                         // 过滤掉无效的新闻
-                        if (TextUtils.isEmpty(newsList.get(i).getUrl()))
+                        if (TextUtils.isEmpty(newsList.get(i).getUrl())) {
                             newsList.remove(i);
+                            size--;
+                        }
                     }
                     mCurrentIndex += 20;
                     mIView.updateContentList(newsList);
@@ -126,6 +132,6 @@ public class WangyiPresenter extends WangyiContract.WangyiPresenter {
         bundle.putString(BundleKeyConstant.ARG_KEY_WANGYI_DETAIL_TITLE,item.getTitle());
         bundle.putString(BundleKeyConstant.ARG_KEY_WANGYI_DETAIL_IMAGE_URL,item.getImgsrc());
         bundle.putString(BundleKeyConstant.ARG_KEY_WANGYI_DETAIL_COPYRIGHT,item.getSource());
-        mIView.startNewActivity(null,bundle);
+        mIView.startNewActivity(WangyiDailyDetailActivity.class,bundle);
     }
 }

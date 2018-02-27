@@ -1,13 +1,14 @@
 package cn.sn.zwcx.yizi.presenter.home.tabs;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import cn.sn.zwcx.sdk.utils.AppUtil;
 import cn.sn.zwcx.yizi.R;
 import cn.sn.zwcx.yizi.activitys.detail.WeixinChoiceDetailActivity;
-import cn.sn.zwcx.yizi.app.App;
+import cn.sn.zwcx.yizi.global.MyApplication;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.contract.home.tabs.WeixinContract;
 import cn.sn.zwcx.yizi.model.bean.weixin.WeixinChoiceItemBean;
@@ -46,11 +47,12 @@ public class WeixinPresenter extends WeixinContract.WeixinPresenter {
     @Override
     public void loadLatestList() {
         mCurrentPager = 1;
-        mRxManager.register(mIModel.getWeixinChioceList(mCurrentPager,mPagerSize,mDttype, App.JU_HE_APP_KEY).subscribe(new Consumer<WeixinChoiceListBean>() {
+        mRxManager.register(mIModel.getWeixinChioceList(mCurrentPager,mPagerSize,mDttype, MyApplication.JU_HE_APP_KEY).subscribe(new Consumer<WeixinChoiceListBean>() {
             @Override
             public void accept(WeixinChoiceListBean weixinChoiceListBean) throws Exception {
                 if (mIView == null) return;
-                if (weixinChoiceListBean.getErrorCode().equals("0")){
+                Log.e("********************","error code:" + weixinChoiceListBean.getError_code());
+                if (weixinChoiceListBean.getError_code().equals("0")){
                     mCurrentPager ++;
                     mIView.updateContentList(weixinChoiceListBean.getResult().getList());
                 } else
@@ -72,12 +74,12 @@ public class WeixinPresenter extends WeixinContract.WeixinPresenter {
     public void loadMoreList() {
         if (!isLoading){
             isLoading = true;
-            mRxManager.register(mIModel.getWeixinChioceList(mCurrentPager,mPagerSize,mDttype,App.JU_HE_APP_KEY).subscribe(new Consumer<WeixinChoiceListBean>() {
+            mRxManager.register(mIModel.getWeixinChioceList(mCurrentPager,mPagerSize,mDttype, MyApplication.JU_HE_APP_KEY).subscribe(new Consumer<WeixinChoiceListBean>() {
                 @Override
                 public void accept(WeixinChoiceListBean weixinChoiceListBean) throws Exception {
                     isLoading = false;
                     if (mIView == null) return;
-                    if (weixinChoiceListBean.getErrorCode().equals("0")){
+                    if (weixinChoiceListBean.getError_code().equals("0")){
                         mCurrentPager ++;
                         mIView.updateContentList(weixinChoiceListBean.getResult().getList());
                     } else

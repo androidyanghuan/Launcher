@@ -5,9 +5,8 @@ import android.content.res.Resources;
 import android.support.annotation.NonNull;
 
 import cn.sn.zwcx.sdk.base.BaseModel;
-import cn.sn.zwcx.sdk.global.GlobalApplication;
 import cn.sn.zwcx.yizi.R;
-import cn.sn.zwcx.yizi.app.App;
+import cn.sn.zwcx.yizi.global.MyApplication;
 import cn.sn.zwcx.yizi.contract.home.HomeMainContract;
 
 /**
@@ -36,7 +35,7 @@ public class HomeMainModel extends BaseModel implements HomeMainContract.IHomeMa
 
     @Override
     public String[] getTabs() {
-        Context context = App.mi.getContext();
+        Context context = MyApplication.mi.getContext();
         Resources resources = context.getResources();
         return resources.getStringArray(R.array.home_tabs);
     }
