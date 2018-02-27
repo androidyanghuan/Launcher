@@ -1,14 +1,17 @@
 package cn.sn.zwcx.yizi.activitys.detail;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -180,9 +183,30 @@ public abstract class BaseWebViewLoadActivity <P extends BaseWebViewLoadContract
     protected void initWebView() {
         // 添加js交互接口,并起名为imageListener
         nswvDetailContent.addJavascriptInterface(new SupportJavascriptInterface(context), "imageListener");
+     //   nswvDetailContent.setWebChromeClient(new WebChromeClient(){ });
         nswvDetailContent.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                String url = request.getUrl().toString();
+                Log.e("******************","url:" + url);
+                if (TextUtils.isEmpty(url))
+                    return false;
+                try {
+                    if (url.startsWith("weixin://")
+                            || url.startsWith("alipays://")
+                            || url.startsWith("mailto://")
+                            || url.startsWith("tel://")
+                            || url.startsWith("dianping://")
+                            || url.startsWith("http://www.bilibili")) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                        Log.e("***************","8888888888888888**************");
+                        return true;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 view.loadUrl(request.getUrl().toString());
                 return true;
             }

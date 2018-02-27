@@ -96,10 +96,23 @@ public class MainActivity extends BaseCompatActivity implements HomeFragment.OnO
         dlRoot = findViewById(R.id.dl_root);
         bnvBar = findViewById(R.id.bnv_bar);
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             fragments[FIRST] = HomeRootFragment.newInstance();
             fragments[SECOND] = GankIoRootFragment.newInstance();
+
+            loadMultipleRootFragment(R.id.fl_container, FIRST,
+                    fragments[FIRST],
+                    fragments[SECOND]);
+
+        } else {
+            // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
+            // 这里我们需要拿到mFragments的引用,也可以通过getSupportFragmentManager.getFragments()
+            // 自行进行判断查找(效率更高些),用下面的方法查找更方便些
+            fragments[FIRST] = findFragment(HomeRootFragment.class);
+            fragments[SECOND] = findFragment(GankIoRootFragment.class);
         }
+
+
 
         //此处实际应用中替换成服务器拉取图片
     /*    Uri headUri = Uri.fromFile(new File(getCacheDir() + BundleKeyConstant.HEAD_IMAGE_NAME + ".jpg"));
@@ -109,7 +122,7 @@ public class MainActivity extends BaseCompatActivity implements HomeFragment.OnO
             if (bitmap != null)
                 civView.setImageBitmap(bitmap);
         }*/
-        new Thread(new Runnable() {
+    /*    new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -129,7 +142,7 @@ public class MainActivity extends BaseCompatActivity implements HomeFragment.OnO
                     e.printStackTrace();
                 }
             }
-        }).start();
+        }).start();*/
         //   Glide.with(context).load(url).crossFade().fitCenter().diskCacheStrategy(DiskCacheStrategy.RESULT).into(civView);
         civView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,10 +158,10 @@ public class MainActivity extends BaseCompatActivity implements HomeFragment.OnO
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_item_home:
-
+                        showHideFragment(fragments[FIRST]);
                         break;
                     case R.id.menu_item_goods:
-
+                        showHideFragment(fragments[SECOND]);
                         break;
                     case R.id.menu_item_books:
 
@@ -174,8 +187,9 @@ public class MainActivity extends BaseCompatActivity implements HomeFragment.OnO
                         startActivity(WebViewLoadActivity.class,bundle);
                         break;
                     case R.id.group_item_more:
-                        bundle.putString(BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_TITLE,"Horrarndoo");
-                        bundle.putString(BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_URL,"http://blog.csdn.net/oqinyou");
+                        bundle.putString(BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_TITLE,"Cloudnetgo");
+                     //   bundle.putString(BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_URL,"http://blog.csdn.net/oqinyou");
+                        bundle.putString(BundleKeyConstant.ARG_KEY_WEB_VIEW_LOAD_URL,"http://www.cloudnetgo.com");
                         startActivity(WebViewLoadActivity.class,bundle);
                         break;
                     case R.id.group_item_qr:

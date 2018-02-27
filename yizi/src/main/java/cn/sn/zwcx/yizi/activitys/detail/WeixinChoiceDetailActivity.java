@@ -11,6 +11,7 @@ import cn.sn.zwcx.sdk.utils.StatusBarUtil;
 import cn.sn.zwcx.yizi.R;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.contract.detail.WeixinDetailConstant;
+import cn.sn.zwcx.yizi.presenter.detail.WeixinDetailPresenter;
 import cn.sn.zwcx.yizi.presenter.home.tabs.WeixinPresenter;
 
 /**
@@ -67,6 +68,6 @@ public class WeixinChoiceDetailActivity extends BaseWebViewLoadActivity<WeixinDe
     @NonNull
     @Override
     public BasePresenter initPresenter() {
-        return WeixinPresenter.newInstance();
+        return WeixinDetailPresenter.newInstance();
     }
 }

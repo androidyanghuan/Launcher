@@ -1,25 +1,21 @@
 package cn.sn.zwcx.yizi.activitys.detail;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
 
-import java.util.List;
-
 import cn.sn.zwcx.sdk.base.BasePresenter;
+import cn.sn.zwcx.sdk.utils.DisplayUtil;
 import cn.sn.zwcx.sdk.utils.HtmlUtils;
+import cn.sn.zwcx.sdk.utils.StatusBarUtil;
 import cn.sn.zwcx.yizi.R;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.contract.detail.WangyiDetailConstant;
-import cn.sn.zwcx.yizi.contract.home.tabs.WangyiContract;
 import cn.sn.zwcx.yizi.model.bean.wangyi.WangyiNewsDetailBean;
-import cn.sn.zwcx.yizi.model.bean.wangyi.WangyiNewsItemBean;
 import cn.sn.zwcx.yizi.presenter.detail.WangyiDetailPresenter;
-import cn.sn.zwcx.yizi.presenter.home.tabs.WangyiPresenter;
-import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * Created by on 2018/1/11 17:34.
@@ -48,9 +44,12 @@ public class WangyiDailyDetailActivity extends BaseWebViewLoadActivity<WangyiDet
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        tvDetailTitle.setText(mTitle);
-        tvDetailCopyright.setText(mCopyright);
-        Glide.with(context).load(mImageUrl).crossFade().into(ivDetail);
+    //    tvDetailTitle.setText(mTitle);
+    //    tvDetailCopyright.setText(mCopyright);
+    //    Glide.with(context).load(mImageUrl).crossFade().into(ivDetail);
+        AppBarLayout.LayoutParams lp = (AppBarLayout.LayoutParams) appBar.getChildAt(0).getLayoutParams();
+        // 控件的高强制设成56dp+状态栏高度
+        lp.height = DisplayUtil.dp2px(56) + StatusBarUtil.getStatusBarHeight(context);
     }
 
     @NonNull

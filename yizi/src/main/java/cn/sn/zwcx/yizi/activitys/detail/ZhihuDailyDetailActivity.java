@@ -2,12 +2,16 @@ package cn.sn.zwcx.yizi.activitys.detail;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
+import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
 
 import cn.sn.zwcx.sdk.base.BasePresenter;
+import cn.sn.zwcx.sdk.utils.DisplayUtil;
 import cn.sn.zwcx.sdk.utils.HtmlUtils;
+import cn.sn.zwcx.sdk.utils.StatusBarUtil;
 import cn.sn.zwcx.yizi.R;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.contract.detail.ZhihuDetailContract;
@@ -38,7 +42,7 @@ public class ZhihuDailyDetailActivity extends BaseWebViewLoadActivity<ZhihuDetai
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        tvDetailTitle.setText(mTitle);
+      //  tvDetailTitle.setText(mTitle);
     }
 
     @NonNull
@@ -54,10 +58,11 @@ public class ZhihuDailyDetailActivity extends BaseWebViewLoadActivity<ZhihuDetai
                 .load(bean.getImage())
                 .crossFade()
                 .into(ivDetail);
-        tvDetailTitle.setText(bean.getTitle());
-        tvDetailCopyright.setText(bean.getImage_source());
+     //   tvDetailTitle.setText(bean.getTitle());
+     //   tvDetailCopyright.setText(bean.getImage_source());
         String htmlData = HtmlUtils.createHtmlData(bean.getBody(), bean.getCss(), bean.getJs());
         nswvDetailContent.loadData(htmlData,HtmlUtils.MIME_TYPE,HtmlUtils.ENCODING);
+
     }
 
     @Override

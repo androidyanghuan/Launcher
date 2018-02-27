@@ -3,6 +3,7 @@ package cn.sn.zwcx.yizi.activitys.detail;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.util.Log;
 import android.view.View;
 
 import cn.sn.zwcx.sdk.base.BasePresenter;

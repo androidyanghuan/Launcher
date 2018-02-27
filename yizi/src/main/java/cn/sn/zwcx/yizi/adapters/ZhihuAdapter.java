@@ -3,6 +3,7 @@ package cn.sn.zwcx.yizi.adapters;
 import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -48,6 +49,7 @@ public class ZhihuAdapter extends BaseCompatAdapter<ZhihuDailyItemBean,BaseViewH
                 helper.setTextColor(R.id.tv_item_title,Color.BLACK);
         }
         helper.setText(R.id.tv_item_title,item.getTitle());
+        Log.e(TAG,"title:" + item.getTitle());
         Glide.with(mContext)
                 .load(item.getImages()[0])
                 .crossFade()

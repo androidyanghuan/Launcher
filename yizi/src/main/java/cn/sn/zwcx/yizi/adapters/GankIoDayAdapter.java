@@ -1,6 +1,7 @@
 package cn.sn.zwcx.yizi.adapters;
 
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -82,7 +83,7 @@ public class GankIoDayAdapter extends BaseMultiItemQuickAdapter<GankIoDayItemBea
     protected void convert(BaseViewHolder helper, GankIoDayItemBean item) {
         helper.setText(R.id.tv_type_item_title, item.getType());
         helper.setText(R.id.tv_item_title, item.getDesc());
-
+    //    Log.e(TAG,"type:" + item.getType() + "\ndesc:" + item.getDesc() + "\nurl:" + item.getUrl());
         switch (item.getType()) {
             case "福利":
                 helper.setImageResource(R.id.iv_type_item_title, R.drawable
