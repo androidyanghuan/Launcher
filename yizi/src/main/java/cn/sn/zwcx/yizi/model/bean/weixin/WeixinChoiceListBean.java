@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public class WeixinChoiceListBean {
-    private String reason,errorCode;
+    private String reason,error_code;
 
     private Result result;
 
@@ -21,12 +21,12 @@ public class WeixinChoiceListBean {
         this.reason = reason;
     }
 
-    public String getErrorCode() {
-        return errorCode;
+    public String getError_code() {
+        return error_code;
     }
 
     public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
+        this.error_code = errorCode;
     }
 
     public Result getResult() {
@@ -41,7 +41,7 @@ public class WeixinChoiceListBean {
     public String toString() {
         return "WeixinChoiceListBean{" +
                 "reason='" + reason + '\'' +
-                ", errorCode='" + errorCode + '\'' +
+                ", errorCode='" + error_code + '\'' +
                 ", result=" + result +
                 '}';
     }

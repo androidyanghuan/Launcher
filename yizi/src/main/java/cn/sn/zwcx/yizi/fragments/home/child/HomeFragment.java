@@ -27,7 +27,7 @@ import cn.sn.zwcx.sdk.fragments.BaseMVPCompatFragment;
 import cn.sn.zwcx.sdk.utils.SpUtil;
 import cn.sn.zwcx.yizi.R;
 import cn.sn.zwcx.yizi.activitys.detail.WebViewLoadActivity;
-import cn.sn.zwcx.yizi.app.App;
+import cn.sn.zwcx.yizi.global.MyApplication;
 import cn.sn.zwcx.yizi.constants.BundleKeyConstant;
 import cn.sn.zwcx.yizi.contract.home.HomeMainContract;
 import cn.sn.zwcx.yizi.fragments.home.child.tabs.WangyiFragment;
@@ -101,7 +101,7 @@ public class HomeFragment extends BaseMVPCompatFragment<HomeMainContract.HomeMai
 
     @Override
     public void showTabList(String[] tabs) {
-        if (App.ISLOG)
+        if (MyApplication.ISLOG)
             Log.d(TAG,"tabs:" + Arrays.toString(tabs));
         int length = tabs.length;
         for (int i = 0; i < length; i++){

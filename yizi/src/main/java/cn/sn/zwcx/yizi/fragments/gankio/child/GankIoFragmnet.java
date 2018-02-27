@@ -2,6 +2,7 @@ package cn.sn.zwcx.yizi.fragments.gankio.child;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -13,11 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.sn.zwcx.sdk.adapters.FragmentAdapter;
 import cn.sn.zwcx.sdk.base.BasePresenter;
 import cn.sn.zwcx.sdk.fragments.BaseMVPCompatFragment;
 import cn.sn.zwcx.sdk.rx.RxBus;
@@ -25,7 +29,9 @@ import cn.sn.zwcx.sdk.rx.Subscribe;
 import cn.sn.zwcx.yizi.R;
 import cn.sn.zwcx.yizi.constants.RxBusCode;
 import cn.sn.zwcx.yizi.contract.gankio.GankIoMainContract;
+import cn.sn.zwcx.yizi.fragments.gankio.child.tabs.GankIoCustomFragment;
 import cn.sn.zwcx.yizi.fragments.gankio.child.tabs.GankIoDayFragment;
+import cn.sn.zwcx.yizi.fragments.gankio.child.tabs.GankIoWelfareFragment;
 import cn.sn.zwcx.yizi.presenter.gankio.GankIoMainPresenter;
 
 /**
@@ -37,11 +43,6 @@ import cn.sn.zwcx.yizi.presenter.gankio.GankIoMainPresenter;
 public class GankIoFragmnet extends BaseMVPCompatFragment<GankIoMainContract.GankIoMainPresenter,GankIoMainContract.IGankIoMainModel>
         implements GankIoMainContract.IGankIoMainView {
 
-/*    private AppBarLayout appBar;
-    private Toolbar toolbar;
-    private TableLayout tableLayout;
-    private ViewPager viewPager;
-    private FloatingActionButton fabButton;*/
     @BindView(R.id.app_bar)
     AppBarLayout appBar;
     @BindView(R.id.toolbar)
@@ -97,16 +98,22 @@ public class GankIoFragmnet extends BaseMVPCompatFragment<GankIoMainContract.Gan
                     fragments.add(GankIoDayFragment.newInstance());
                     break;
                 case 1:
-
+                    fragments.add(GankIoCustomFragment.newInstance());
                     break;
                 case 2:
-
+                    fragments.add(GankIoWelfareFragment.newInstance());
                     break;
                 default:
                     fragments.add(GankIoDayFragment.newInstance());
                     break;
             }
         }
+        fragmentPager.setAdapter(new FragmentAdapter(getChildFragmentManager(),fragments));
+        fragmentPager.setCurrentItem(0);
+        tabLayout.setupWithViewPager(fragmentPager);
+        tabLayout.setVerticalScrollbarPosition(0);
+        for (int i = 0; i < length; i++)
+            tabLayout.getTabAt(i).setText(tabs[i]);
     }
 
     @Override

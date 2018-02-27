@@ -7,8 +7,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
- * Created by Horrarndoo on 2017/9/21.
- * <p>
+ * Created by on 2018/1/15 11:59.
+ * Created by author YangHuan
+ * e-mail:435025168@qq.com
  */
 
 public interface WeixinApi {

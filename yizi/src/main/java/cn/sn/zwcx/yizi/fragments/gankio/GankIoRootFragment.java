@@ -30,6 +30,6 @@ public class GankIoRootFragment extends BaseCompatFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_ganio_root;
+        return R.layout.fragment_gankio_root;
     }
 }
