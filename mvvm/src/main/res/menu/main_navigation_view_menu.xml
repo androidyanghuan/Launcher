@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/main_nav_home"
+        android:checked="true"
+        android:icon="@drawable/main_icon_navigation_home"
+        android:title="@string/main_home_page" />
+    <item
+        android:id="@+id/main_nav_goods"
+        android:icon="@drawable/main_icon_navigation_home"
+        android:title="@string/main_goods_page" />
+    <item
+        android:id="@+id/main_nav_books"
+        android:icon="@drawable/main_icon_navigation_home"
+        android:title="@string/main_books_page" />
+    <item
+        android:id="@+id/main_nav_me"
+        android:icon="@drawable/main_icon_navigation_home"
+        android:title="@string/main_me_page" />
+    </group>
+
+    <item android:title="@string/main_option_str">
+        <menu>
+            <item
+                android:id="@+id/option_item_mode"
+                android:checkable="true"
+                android:icon="@drawable/main_icon_navigation_home"
+                android:title="@string/main_night_model"/>
+
+            <item
+                android:id="@+id/option_item_about"
+                android:checkable="true"
+                android:icon="@drawable/main_icon_navigation_home"
+                android:title="@string/main_about_str"/>
+            <item
+                android:id="@+id/option_item_home"
+                android:checkable="true"
+                android:icon="@drawable/main_icon_navigation_home"
+                android:title="@string/main_home_page" />
+            <item
+                android:id="@+id/option_item_goods"
+                android:checkable="true"
+                android:icon="@drawable/main_icon_navigation_home"
+                android:title="@string/main_goods_page" />
+            <item
+                android:id="@+id/option_item_books"
+                android:checkable="true"
+                android:icon="@drawable/main_icon_navigation_home"
+                android:title="@string/main_books_page" />
+            <item
+                android:id="@+id/option_item_me"
+                android:checkable="true"
+                android:icon="@drawable/main_icon_navigation_home"
+                android:title="@string/main_me_page" />
+        </menu>
+    </item>
+
+</menu>
