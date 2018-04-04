@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">MVVM</string>
+    <string name="main_press_again">再按一次退出本应用</string>
+    <string name="main_today_news">今日日报</string>
+    <string name="main_home_page">主页</string>
+    <string name="main_goods_page">干货</string>
+    <string name="main_books_page">书籍</string>
+    <string name="main_me_page">我的</string>
+    <string name="main_option_str">选项</string>
+    <string name="main_night_model">夜间模式</string>
+    <string name="main_about_str">关于</string>
+    <string name="main_navigation_header_signature">生命不息,奋斗不止</string>
+    <string name="network_error">当前网络不可用,请检查网络连接!</string>
+    <string name="more_str">更多</string>
+    <string name="switch_str">换一个</string>
+
+
+    <string-array name="home_fragment_tab">
+        <item>知乎日报</item>
+        <item>热点新闻</item>
+        <item>微信精选</item>
+    </string-array>
+    <string-array name="gank_io_fragment_tab">
+        <item>每日推荐</item>
+        <item>干货定制</item>
+        <item>福利</item>
+    </string-array>
+
 </resources>

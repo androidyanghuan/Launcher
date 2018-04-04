@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#FFEEEEEE</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">@android:color/holo_blue_light</color>
+    <color name="textColorPrimary">#FFEEEEEE</color>
+    <color name="colorControlHighlight">#FFEEEEEE</color>
+
+
+    <color name="main_sdv_round_color">#FFF3CF44</color>
+    <!-- grey -->
+    <color name="md_grey_500">#9E9E9E</color>
+    <color name="bg_gray">#F1F1F1</color>
+
 </resources>

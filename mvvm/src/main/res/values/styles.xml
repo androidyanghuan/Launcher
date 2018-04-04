@@ -3,9 +3,32 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
+        <item name="colorPrimaryDark">@android:color/holo_blue_light</item>
+        <!--这个属性是用于配置控件被选中时显示的颜色，eg:radio,checkBox等等-->
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
+        http://blog.csdn.net/u013647382/article/details/51603141-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!--Toolbar中的标题与小标题以及更多菜单中文字的颜色-->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <!--配置控件初始化显示时的颜色-->
+        <item name="colorControlNormal">#000000</item>
+        <!--配置点击控件时的效果颜色-->
+        <item name="colorControlHighlight">@color/colorControlHighlight</item>
+        <!--点击控件(或者控件被选中)后显示的颜色，如果使用该属性，那么colorAccent的效果将被覆盖-->
+        <!--<item name="colorControlActivated">@color/colorControlActivated</item> -->
+
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.ToolbarPopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="overlapAnchor">false</item>
+    </style>
 </resources>
