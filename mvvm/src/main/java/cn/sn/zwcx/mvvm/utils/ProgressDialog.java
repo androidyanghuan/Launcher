@@ -15,7 +15,7 @@ public class ProgressDialog {
     public static void show(Context context, boolean cancelable, String message) {
         try {
             if (pd == null) {
-                pd = new android.app.ProgressDialog(context);
+                pd = new android.app.ProgressDialog(context, android.app.ProgressDialog.STYLE_SPINNER);
                 pd.setCancelable(cancelable);
                 pd.setMessage(message);
                 pd.show();
