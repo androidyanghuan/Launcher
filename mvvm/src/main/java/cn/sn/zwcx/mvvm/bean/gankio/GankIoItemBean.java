@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import cn.sn.zwcx.mvvm.BR;
+import cn.sn.zwcx.mvvm.activitys.ImageBrowseActivity;
 import cn.sn.zwcx.mvvm.activitys.WebViewActivity;
 import cn.sn.zwcx.mvvm.constants.Constant;
 
@@ -177,6 +178,15 @@ public class GankIoItemBean extends BaseObservable implements Serializable {
             args.putString("imgsrc", images.get(0));
         args.putString("imgsrc", Constant.MAIN_NV_USER_ICON);
         Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtras(args);
+        context.startActivity(intent);
+    }
+
+    public void onItemClick(View view){
+        Context context = view.getContext();
+        Bundle args = new Bundle();
+        args.putString("url",url);
+        Intent intent = new Intent(context, ImageBrowseActivity.class);
         intent.putExtras(args);
         context.startActivity(intent);
     }
