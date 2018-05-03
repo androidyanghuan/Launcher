@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="gankIoItem"
+            type="cn.sn.zwcx.mvvm.bean.gankio.GankIoItemBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:srcCompat="@{gankIoItem.type}"
+            tools:src="@drawable/ic_vector_title_android"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_marginStart="5dp"
+            android:ellipsize="end"
+            android:lines="1"
+            app:setAuthorName="@{gankIoItem.who}"
+            android:textSize="14sp"
+            tools:text="佚名"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="◆"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{gankIoItem.type}"
+            android:textSize="14sp"
+            tools:text="type"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="end"
+            android:layout_marginEnd="5dp"
+            app:setPublishedTime="@{gankIoItem.publishedAt}"
+            android:textSize="14sp"
+            tools:text="2018-02-28"/>
+
+    </LinearLayout>
+
+</layout>

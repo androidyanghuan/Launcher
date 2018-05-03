@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="subject"
+            type="cn.sn.zwcx.mvvm.bean.douban.child.Subjects" />
+
+        <variable
+            name="movieDetail"
+            type="cn.sn.zwcx.mvvm.bean.douban.MovieDetailBean" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/activity_movie_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
+        tools:context="cn.sn.zwcx.mvvm.activitys.MovieDetailActivity">
+        <!--android:descendantFocusability="blocksDescendants"-->
+        <!--viewgroup会覆盖子类控件而直接获得焦点，避免RecycleView开始的时候获取焦点滚动到底部-->
+        <cn.sn.zwcx.mvvm.views.CompatNestedScrollView
+            android:id="@+id/activity_movie_detail_cnsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/activity_movie_detail_item_head"
+                    app:movieDetail="@{movieDetail}"
+                    app:subject="@{subject}" />
+
+                <include
+                    layout="@layout/activity_movie_detail_item_middle"
+                    app:movieDetail="@{movieDetail}" />
+                <!-- 导演&演员 -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/activity_movie_detail_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:scrollbars="none" />
+            </LinearLayout>
+        </cn.sn.zwcx.mvvm.views.CompatNestedScrollView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_toolbar_bg"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:alpha="0"
+                android:scaleType="fitXY"
+                app:headBlurBackground="@{subject.images.large}"
+                tools:src="@drawable/ic_launcher_background" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/activity_movie_detail_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:navigationIcon="@drawable/back"
+                    app:popupTheme="@style/AppTheme.ToolbarPopupOverlay"
+                    app:title="@{subject.title}"
+                    app:titleTextColor="@android:color/white" />
+            </FrameLayout>
+        </FrameLayout>
+    </FrameLayout>
+</layout>

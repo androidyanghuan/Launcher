@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="top"
+            type="cn.sn.zwcx.mvvm.bean.douban.HotMovieBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/fragment_movie_item_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@drawable/item_touch_bg">
+            <ImageView
+                android:id="@+id/fragment_movie_sub_head_icon"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:scaleType="centerCrop"
+                tools:src="@mipmap/ic_launcher"/>
+            <TextView
+                android:id="@+id/fragment_movie_sub_head_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/fragment_movie_sub_head_icon"
+                android:layout_margin="7dp"
+                android:text="豆瓣电影Top250"
+                android:textSize="16sp"
+                android:textColor="@color/colorContent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment_movie_sub_head_title"
+                android:layout_toRightOf="@+id/fragment_movie_sub_head_icon"
+                android:layout_margin="7dp"
+                android:text="从前现在过去了再不来"
+                android:textSize="12sp"
+                android:textColor="@color/colorTitle"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/home_arrow_right_gray"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="15dp"
+            android:text="@string/hot_movie"
+            android:textSize="17sp"
+            android:textColor="@android:color/black"
+            android:drawableStart="@drawable/ic_vector_head_vertical_line"/>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="subject"
+            type="cn.sn.zwcx.mvvm.bean.douban.child.Subjects"/>
+        <variable
+            name="movieDetail"
+            type="cn.sn.zwcx.mvvm.bean.douban.MovieDetailBean"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:scaleType="fitXY"
+            app:headBlurBackground="@{subject.images.large}"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="95dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/movie_detail_width"
+                    android:layout_height="@dimen/movie_detail_height"
+                    android:scaleType="fitXY"
+                    android:transitionName="@string/transition_movie_img"
+                    app:setMovieIcon="@{subject.images.large}"
+                    android:onClick="@{subject::onItemClick}"
+                    tools:src="@mipmap/ic_launcher" />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{subject::onItemClick}"
+                    android:orientation="vertical">
+                    <!-- 评分 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_dark"
+                            app:setRating="@{subject.rating.average}"
+                            android:textSize="15sp"
+                            tools:text="@string/rating_str"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            app:setCollectCount="@{subject.collectCount}"
+                            tools:text="8.8 5840 人评分" />
+                    </LinearLayout>
+                    <!-- 导演 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:text="@string/director_str"
+                            android:drawablePadding="-10dp"
+                            android:textSize="15sp"
+                            android:textColor="@android:color/white"
+                            tools:text="@string/director_str"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{subject.directors[0].name}"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            tools:text="@string/director_str"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/protagonist_str"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            app:setProtagonist="@{subject.casts}"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            tools:text="yang huan" />
+                    </LinearLayout>
+                    <!-- 类型 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        app:setGenre="@{subject.genres}"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        tools:text="@string/type_str"/>
+                    <!-- 上映日期 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        app:setShowTime="@{movieDetail.year}"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        tools:text="@string/show_data"/>
+                    <!-- 制片国家/地区 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        app:setCountrie="@{movieDetail.countries}"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        tools:text="@string/production_country"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
