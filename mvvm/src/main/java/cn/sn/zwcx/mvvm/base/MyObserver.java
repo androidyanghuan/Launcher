@@ -7,7 +7,8 @@ import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeoutException;
 
-import cn.sn.zwcx.mvvm.utils.ProgressDialog;
+import cn.sn.zwcx.mvvm.R;
+import cn.sn.zwcx.mvvm.views.CustomProgressDialog;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -91,7 +92,7 @@ public abstract class MyObserver<T> implements Observer<T> {
 
     protected void onRequestStart() {
         if (isShowDialog)
-        showProgressDialog();
+            showProgressDialog();
     }
 
     protected void onRequestEnd() {
@@ -99,11 +100,13 @@ public abstract class MyObserver<T> implements Observer<T> {
     }
 
     public void showProgressDialog() {
-        ProgressDialog.show(mContext, false, "请稍后...");
+     //   ProgressDialog.show(mContext, false, "请稍后...");
+        CustomProgressDialog.createLoadingDialog(mContext,false,mContext.getString(R.string.please_wait),-1);
     }
 
     public void closeProgressDialog() {
-        ProgressDialog.cancel();
+    //    ProgressDialog.cancel();
+        CustomProgressDialog.cancel();
     }
 
 }
