@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import cn.sn.zwcx.mvvm.adapters.HomeFragmentAdapter;
 import cn.sn.zwcx.mvvm.databinding.GankIoFragmentBinding;
 import cn.sn.zwcx.mvvm.fragments.gank.GankIoCustomFragment;
 import cn.sn.zwcx.mvvm.fragments.gank.GankIoDayFragment;
+import cn.sn.zwcx.mvvm.fragments.gank.WelfareFragment;
 
 /**
  * Created by on 2018/3/27 17:47.
@@ -40,6 +42,8 @@ public class GankIoFragment extends Fragment implements GankIoDayFragment.SetCur
     private GankIoDayFragment gankIoDayFragment;
 
     private GankIoCustomFragment gankIoCustomFragment;
+
+    private WelfareFragment welfareFragment;
 
     public static GankIoFragment newInstance(String title){
         GankIoFragment fragment = new GankIoFragment();
@@ -65,9 +69,10 @@ public class GankIoFragment extends Fragment implements GankIoDayFragment.SetCur
         mPages = new ArrayList<>();
         gankIoDayFragment = GankIoDayFragment.newInstance();
         gankIoCustomFragment = GankIoCustomFragment.newInstance();
+        welfareFragment = WelfareFragment.newInstance();
         mPages.add(gankIoDayFragment);
         mPages.add(gankIoCustomFragment);
-        mPages.add(GankIoCustomFragment.newInstance());
+        mPages.add(welfareFragment);
         mAdapter = new HomeFragmentAdapter(getActivity().getSupportFragmentManager(),mPages,mContext,R.array.gank_io_fragment_tab);
         mBinding.gankIoVp.setAdapter(mAdapter);
         mBinding.gankIoVp.setCurrentItem(View.SCROLLBAR_POSITION_DEFAULT);
@@ -80,7 +85,10 @@ public class GankIoFragment extends Fragment implements GankIoDayFragment.SetCur
     public void setCurrentPageIndex(int index, String type) {
         Bundle args = new Bundle();
         args.putString("type",type);
-        gankIoCustomFragment.setArguments(args);
+        if ("福利".equals(type))
+            welfareFragment.setArguments(args);
+        else
+            gankIoCustomFragment.setArguments(args);
         mBinding.gankIoVp.setCurrentItem(index);
      //   mAdapter.notifyDataSetChanged();
 

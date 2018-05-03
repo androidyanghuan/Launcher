@@ -27,10 +27,12 @@ import cn.sn.zwcx.mvvm.R;
 import cn.sn.zwcx.mvvm.adapters.GankIoDayAdapter;
 import cn.sn.zwcx.mvvm.apis.GankioApi;
 import cn.sn.zwcx.mvvm.base.MyObserver;
+import cn.sn.zwcx.mvvm.bean.gankio.GankDate;
 import cn.sn.zwcx.mvvm.bean.gankio.GankIoDayBean;
 import cn.sn.zwcx.mvvm.bean.gankio.GankIoItemBean;
 import cn.sn.zwcx.mvvm.databinding.GankIoFragmentDayBinding;
 import cn.sn.zwcx.mvvm.utils.RetrofitFactory;
+import cn.sn.zwcx.mvvm.utils.SPUtils;
 import cn.sn.zwcx.mvvm.utils.ToastUtil;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -49,9 +51,6 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
     private Context mContext;
 
     private String mYear,mMonth,mDay;
-
-    private final String SP_NAME = "gank_io_date";
-    private SharedPreferences sp;
 
     private List<GankIoItemBean> mItems;
     private GankIoDayAdapter mAdapter;
@@ -87,7 +86,6 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mContext = getActivity();
-        sp = mContext.getSharedPreferences(SP_NAME,Context.MODE_PRIVATE);
         mBinding = DataBindingUtil.inflate(inflater, R.layout.gank_io_fragment_day,container,false);
 
         initViews();
@@ -131,8 +129,10 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
                     protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
                         if (isNetWorkError)
                             ToastUtil.showToast(R.string.network_error);
-                        if (refresh != null)
-                        refresh.finishRefresh(false);
+                        if (refresh != null) {
+                            refresh.finishRefresh(false);
+                            refresh = null;
+                        }
                     }
 
                     @SuppressLint("CommitPrefEdits")
@@ -153,11 +153,13 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
                             }
                             getData(true);
                         } else {
-                            saveDate();
+                            SPUtils.getInstance(mContext).saveGankDate(mYear,mMonth,mDay);
                             getGankIoItemData(gankIoDayBean, results);
                             mAdapter.notifyDataSetChanged();
-                            if (refresh != null)
-                            refresh.finishRefresh(true);
+                            if (refresh != null) {
+                                refresh.finishRefresh(true);
+                                refresh = null;
+                            }
                         }
                     }
                 });
@@ -166,6 +168,7 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
     /** 把数据转换成干货Item的数据 */
     private void getGankIoItemData(GankIoDayBean gankIoDayBean, GankIoDayBean.Results results) {
         List<String> category = gankIoDayBean.getCategory();
+        mItems.clear();
         int categorySize = category.size();
         for (int i = 0; i < categorySize; i++) {
             String categoryName = category.get(i);
@@ -214,20 +217,12 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
         }
     }
 
-    /** 保存有数据的最新日期 */
-    private void saveDate() {
-        SharedPreferences.Editor edit = sp.edit();
-        edit.putString("year",mYear);
-        edit.putString("month",mMonth);
-        edit.putString("day",mDay);
-        edit.apply();
-    }
-
     /** 获取日期 */
     private void getDate() {
-        mYear = sp.getString("year",null);
-        mMonth = sp.getString("month",null);
-        mDay = sp.getString("day",null);
+        GankDate gankData = SPUtils.getInstance(mContext).getGankData();
+        mYear = gankData.getYear();
+        mMonth = gankData.getMonth();
+        mDay = gankData.getDay();
         if (TextUtils.isEmpty(mYear) || TextUtils.isEmpty(mMonth) || TextUtils.isEmpty(mDay)) {
             getCurrentDate();
         }
@@ -245,8 +240,12 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
 
     @Override
     public void setOnMoreClick(View view, GankIoItemBean itemBean) {
-        if (mSetCurrentPage != null)
-            mSetCurrentPage.setCurrentPageIndex(View.SCROLLBAR_POSITION_LEFT,itemBean.getType());
+        if (mSetCurrentPage != null) {
+            if (itemBean.getType().equals("福利"))
+                mSetCurrentPage.setCurrentPageIndex(View.SCROLLBAR_POSITION_RIGHT,itemBean.getType());
+            else
+                mSetCurrentPage.setCurrentPageIndex(View.SCROLLBAR_POSITION_LEFT, itemBean.getType());
+        }
     }
 
 }
