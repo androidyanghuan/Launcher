@@ -36,7 +36,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.BaseViewHolder
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, final int position) {
         ViewDataBinding binding = DataBindingUtil.getBinding(holder.itemView);
         binding.setVariable(variableId,datas.get(position));
         binding.executePendingBindings();
