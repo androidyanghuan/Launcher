@@ -26,7 +26,14 @@ public interface GankioApi {
     @GET("api/day/{year}/{month}/{day}")
     Observable<GankIoDayBean> getGankIoDay(@Path("year") String year, @Path("month") String month, @Path("day") String day);
 
-    @GET("api/day/{type}/{pre_page}/{page}")
+    /**
+     * 定制数据：http://gank.io/api/data/all/10/1
+     * @param type 数据类型
+     * @param pre_page 请求个数
+     * @param page 第几页
+     * @return
+     */
+    @GET("api/data/{type}/{pre_page}/{page}")
     Observable<GankIoCustomListBean> getGankIoCustomList(@Path("type") String type,@Path("pre_page") int pre_page,@Path("page") int page);
 
 }
