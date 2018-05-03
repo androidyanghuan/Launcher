@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.fresco.helper.Phoenix;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.scwang.smartrefresh.header.BezierCircleHeader;
 import com.scwang.smartrefresh.header.FunGameBattleCityHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -76,6 +77,8 @@ public class App extends Application {
         me = this;
         context = getApplicationContext();
         handler = new Handler();
+        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(context)
+                .setDownsampleEnabled(false).build();
         Fresco.initialize(context, ImageLoaderConfig.getImagePipelineConfig(context));
 
     }
