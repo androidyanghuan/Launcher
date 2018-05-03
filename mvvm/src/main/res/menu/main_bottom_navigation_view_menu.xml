@@ -11,7 +11,7 @@
         android:title="@string/main_goods_page" />
     <item
         android:id="@+id/main_bnav_books"
-        android:icon="@drawable/main_icon_navigation_book"
+        android:icon="@drawable/ic_vector_bottom_movie"
         android:title="@string/main_books_page" />
     <item
         android:id="@+id/main_bnav_me"
