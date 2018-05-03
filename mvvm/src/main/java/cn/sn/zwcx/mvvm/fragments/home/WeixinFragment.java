@@ -106,11 +106,19 @@ public class WeixinFragment extends Fragment {
 
                     @Override
                     protected void onSuccees(WeixinChoiceListBean weixinChoiceListBean) throws Exception {
-                        List<WeixinChoiceItemBean> itemBeans = weixinChoiceListBean.getResult().getList();
-                        mItems.addAll(itemBeans);
-                        mAdapter.notifyDataSetChanged();
-                        if (mLoadMore != null)
-                            mLoadMore.finishLoadMore(true);
+                        WeixinChoiceListBean.Result result = weixinChoiceListBean.getResult();
+                        if (result != null) {
+                            List<WeixinChoiceItemBean> itemBeans = result.getList();
+                            mItems.addAll(itemBeans);
+                            mAdapter.notifyDataSetChanged();
+                        } else {
+                            String reason = weixinChoiceListBean.getReason();
+                            ToastUtil.showToast(reason);
+                        }
+                            if (mLoadMore != null)
+                                mLoadMore.finishLoadMore(true);
+
+
                     }
                 });
     }
@@ -132,7 +140,13 @@ public class WeixinFragment extends Fragment {
                     @Override
                     protected void onSuccees(WeixinChoiceListBean weixinChoiceListBean) throws Exception {
                         WeixinChoiceListBean.Result result = weixinChoiceListBean.getResult();
-                        List<WeixinChoiceItemBean> itemBeans = result.getList();
+                        List<WeixinChoiceItemBean> itemBeans = new ArrayList<>();
+                        if (result != null)
+                            itemBeans = result.getList();
+                        else{
+                            String reason = weixinChoiceListBean.getReason();
+                            ToastUtil.showToast(reason);
+                        }
                         if (itemBeans != null && itemBeans.size() > 0)
                             mItems.clear();
                         mItems.addAll(itemBeans);
