@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:srcCompat="@drawable/ic_vector_title_android"
-                    app:srcCompat="@{gankIoDayItem.type}" />
+                    android:srcCompat="@{gankIoDayItem.type}" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -69,14 +69,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
-                <com.facebook.drawee.view.SimpleDraweeView
+            <!--    <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/gank_io_item_image_sdv"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:layout_gravity="center"
                     android:onClick="@{gankIoDayItem::switchClick}"
                     android:src="@{gankIoDayItem.images[0]}"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"/>-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center"
+                    android:onClick="@{gankIoDayItem::switchClick}"
+                    android:scaleType="fitXY"
+                    app:setGankIoItemIcon="@{gankIoDayItem.images[0]}"/>
                 <TextView
                     android:id="@+id/gank_io_item_desc_tv"
                     android:layout_width="match_parent"
