@@ -1,10 +1,13 @@
 package cn.sn.zwcx.mvvm.bean.gankio;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 
 import com.google.gson.annotations.SerializedName;
@@ -13,6 +16,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import cn.sn.zwcx.mvvm.BR;
+import cn.sn.zwcx.mvvm.R;
 import cn.sn.zwcx.mvvm.activitys.ImageBrowseActivity;
 import cn.sn.zwcx.mvvm.activitys.WebViewActivity;
 import cn.sn.zwcx.mvvm.constants.Constant;
@@ -188,7 +192,11 @@ public class GankIoItemBean extends BaseObservable implements Serializable {
         args.putString("url",url);
         Intent intent = new Intent(context, ImageBrowseActivity.class);
         intent.putExtras(args);
-        context.startActivity(intent);
+      //  context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation((Activity) context).toBundle());
+        context.startActivity(intent,
+                ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,
+                        view.findViewById(R.id.fragment_welfare_pv),
+                        context.getString(R.string.transition_movie_img)).toBundle());
     }
 
 }
