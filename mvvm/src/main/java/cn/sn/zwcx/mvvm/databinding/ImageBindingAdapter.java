@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bm.library.PhotoView;
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.fresco.helper.ImageLoader;
@@ -36,6 +37,15 @@ public class ImageBindingAdapter {
             ImageLoader.loadImage(simpleDraweeView, Constant.MAIN_NV_USER_ICON);
         else
             ImageLoader.loadImage(simpleDraweeView,url);
+    }
+
+    @BindingAdapter({"android:src"})
+    public static void loadSrc(PhotoView photoView,String url){
+        if (TextUtils.isEmpty(url))
+            url = Constant.MAIN_NV_USER_ICON;
+        Glide.with(photoView.getContext())
+                .load(url)
+                .into(photoView);
     }
 
     @BindingAdapter({"setMovieIcon"})
