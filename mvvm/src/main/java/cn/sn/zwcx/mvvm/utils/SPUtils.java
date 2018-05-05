@@ -56,4 +56,5 @@ public class SPUtils {
     public String getUserPhoto(){
         return sp.getString("photo","");
     }
+
 }
