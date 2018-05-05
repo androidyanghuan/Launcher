@@ -21,6 +21,7 @@
                 android:id="@+id/activity_image_browse_pv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:transitionName="@string/transition_movie_img"
                 android:scaleType="centerInside"
                 tools:src="@drawable/ic_launcher_background"/>
             <android.support.design.widget.FloatingActionButton
