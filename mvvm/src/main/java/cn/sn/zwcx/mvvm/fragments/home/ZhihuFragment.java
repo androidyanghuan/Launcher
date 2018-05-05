@@ -120,7 +120,7 @@ public class ZhihuFragment extends Fragment {
                 .getLastDailyList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new MyObserver<ZhihuDailyListBean>(getActivity(),isShowDialog) {
+                .subscribe(new MyObserver<ZhihuDailyListBean>(getContext(),isShowDialog) {
                     @Override
                     protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
                         if (refresh != null)

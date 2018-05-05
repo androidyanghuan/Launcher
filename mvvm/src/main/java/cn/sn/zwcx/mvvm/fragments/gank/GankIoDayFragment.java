@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -138,6 +139,10 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
                     @SuppressLint("CommitPrefEdits")
                     @Override
                     protected void onSuccees(GankIoDayBean gankIoDayBean) throws Exception {
+                        if (refresh != null) {
+                            refresh.finishRefresh(true);
+                            refresh = null;
+                        }
                         GankIoDayBean.Results results = gankIoDayBean.getResults();
                         if (results.getAndroid() == null || results.getAndroid().size() == 0) {
                             int day = Integer.parseInt(mDay);
@@ -145,11 +150,10 @@ public class GankIoDayFragment extends Fragment implements GankIoDayAdapter.OnMo
                                 day--;
                                 mDay = String.valueOf(day);
                             } else {
-                                mDay = "31";
+                                mDay = "28";
                                 int month = Integer.parseInt(mMonth);
                                 month--;
                                 mMonth = String.valueOf(month);
-
                             }
                             getData(true);
                         } else {
