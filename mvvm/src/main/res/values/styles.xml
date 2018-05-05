@@ -24,6 +24,8 @@
         <!--点击控件(或者控件被选中)后显示的颜色，如果使用该属性，那么colorAccent的效果将被覆盖-->
         <!--<item name="colorControlActivated">@color/colorControlActivated</item> -->
 
+        <!-- 激活Activity元素过渡效果 -->
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
