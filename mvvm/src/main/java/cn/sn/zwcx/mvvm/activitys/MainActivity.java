@@ -186,8 +186,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (System.currentTimeMillis() - TOUCH_TIME > 2000L) {
             TOUCH_TIME = System.currentTimeMillis();
             ToastUtil.showToast(R.string.main_press_again);
-        }else
+        }else {
             finish();
+            System.exit(0);
+        }
     }
 
     @Override

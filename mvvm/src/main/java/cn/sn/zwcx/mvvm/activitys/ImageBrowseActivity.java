@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -38,6 +41,15 @@ public class ImageBrowseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 分解式
+    //    getWindow().setEnterTransition(new Explode());
+    //    getWindow().setExitTransition(new Explode());
+        // 滑动进入
+    //    getWindow().setEnterTransition(new Slide());
+    //    getWindow().setExitTransition(new Slide());
+        // 淡入淡出
+     //   getWindow().setEnterTransition(new Fade());
+     //   getWindow().setExitTransition(new Fade());
         StatusBarUtil.setColor(this, Color.BLACK);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_image_browse);
         mImageUrl = Constant.MAIN_NV_USER_ICON;
@@ -54,7 +66,8 @@ public class ImageBrowseActivity extends AppCompatActivity {
         mBinding.activityImageBrowseToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+              //  finish();
+                onBackPressed();
             }
         });
 
