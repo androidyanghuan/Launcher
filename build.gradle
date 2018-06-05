@@ -5,6 +5,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+        // GPUImage for Android
+        mavenCentral()
+        maven {
+            url 'http://4thline.org/m2'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
@@ -21,6 +26,12 @@ allprojects {
         maven { url 'https://jitpack.io' }
         google()
         jcenter()
+        maven {
+            url 'https://dl.bintray.com/hpdx/maven/'
+        }
+        maven {
+            url 'http://4thline.org/m2'
+        }
     }
 }
 
