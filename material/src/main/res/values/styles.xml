@@ -8,9 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <!-- set window no title and actionbar -->
-     <!--   <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
 
+    </style>
+
+    <style name="TextOverCount" parent="Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+        <item name="android:textColor">@android:color/holo_green_light</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>
